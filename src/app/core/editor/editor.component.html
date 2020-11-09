@@ -1,0 +1,10 @@
+<div class="mx-auto px-8 mt-2">
+    <ngx-codemirror [(ngModel)]="value" [options]="editorOptions"></ngx-codemirror>
+
+    <div class="container mx-auto mt-5">
+        <select [(ngModel)]="selectedEditorMode" (change)="changeMode()"
+            class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+            <option *ngFor="let opt of editorModes">{{opt}}</option>
+        </select>
+    </div>
+</div>
