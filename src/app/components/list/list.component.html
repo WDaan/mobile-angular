@@ -1,0 +1,11 @@
+<div class="container">
+    <div *ngIf="data && data.length" class="grid grid-cols-3">
+        <div *ngFor="let item of data"
+            class='row-span-1 max-w-sm mt-0 pa-3 relative rounded-lg overflow-hidden shadow-lg bg-white'>
+            <img class='w-full' [src]="item.url" [alt]="item.name" />
+            <div class='px-6 py-4'>
+                <div class='font-bold text-xl mb-2'>{{ item.name }}</div>
+            </div>
+        </div>
+    </div>
+</div>
