@@ -1,6 +1,6 @@
 <div class="container mx-auto">
-    <div *ngIf="data && data.length &&!loading; else spinner" class="container grid grid-cols-3 gap-4">
-        <div *ngFor="let item of data |
+    <div *ngIf="data && data.length &&!loading; else spinner" class="container grid grid-cols-3 gap-4 cursor-pointer">
+        <div [routerLink]="['/detail', item.id]" *ngFor="let item of data |
         paginate: { id: 'server', itemsPerPage: perPage, currentPage: page, totalItems: total }"
             class='row-span-1 max-w-sm mt-0 relative rounded-lg overflow-hidden shadow-lg bg-white'>
             <img class='w-full' [src]="item.url" [alt]="item.name" />

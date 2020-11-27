@@ -31,4 +31,15 @@ export class ApiService {
                 }
             })
     }
+
+    getDetail(id: string) {
+        return this.http.get(`${this.rootURL}/${id}`)
+            .toPromise()
+            .then((res: any) => {
+                const id = res.species.url.match(/\/pokemon-species\/(\d+)\//)[1]
+                return {
+                    ...res, url: `${this.imageURL}${id}.png`
+                }
+            })
+    }
 }
