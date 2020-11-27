@@ -1,18 +1,30 @@
 <div class="mx-auto ma-5 mt-5 flex justify-center">
-    <div *ngIf="item" class='row-span-1 max-w-sm mt-0 relative rounded-lg overflow-hidden shadow-lg bg-white'>
+    <div *ngIf="item" class='row-span-1 max-w-md mt-0 pa-3 px-6 relative rounded-lg overflow-hidden shadow-lg bg-white'>
         <img class='w-full' [src]="item.url" [alt]="item.name" />
         <div class='px-6 py-4'>
             <div class='font-bold text-xl  text-center'>{{ item.name | titlecase }}</div>
         </div>
-        <p className='text-gray-700 text-base'>
-            height: {{item.height}}
-        </p>
-        <p className='text-gray-700 text-base'>
-            weight: {{item.weight}}
-        </p>
-        <div className='px-6 pt-4 pb-2'>
-            <span *ngFor="let type of item.types"
-                class='inline-block  bg-green-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'>
+        <div class="overflow-hidden rounded border-gray-200">
+            <table class="w-full bg-white text-left">
+                <tbody class="text-gray-700">
+                    <tr>
+                        <th class="py-3 px-4">height</th>
+                        <td class="py-3 px-4"> {{item.height}} </td>
+                    </tr>
+                    <tr>
+                        <th class="py-3 px-4">weight</th>
+                        <td class="py-3 px-4"> {{item.weight}} </td>
+                    </tr>
+                    <tr *ngFor="let stat of item.stats">
+                        <th class="py-3 px-4">{{stat.stat.name}}</th>
+                        <td class="py-3 px-4"> {{stat.base_stat}} </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class='px-6 pt-4 pb-2'>
+            <span *ngFor="let type of item.types" [ngClass]="getColor(type.type.name)"
+                class='inline-block rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'>
                 {{type.type.name}}
             </span>
         </div>

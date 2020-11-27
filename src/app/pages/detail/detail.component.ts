@@ -22,19 +22,30 @@ export class DetailComponent implements OnInit {
     fetchDetail() {
         this.apiService.getDetail(this.id).then(res => {
             this.item = res
-            console.log(res)
         }
         )
     }
 
     getColor(type: string) {
         switch (type) {
-            case 'green':
+            case 'grass':
                 return 'bg-green-300'
+            case 'bug':
+                return 'bg-gray-400'
             case 'electric':
                 return 'bg-yellow-300'
             case 'poison':
-                return 'bg-yellow-300'
+                return 'bg-purple-300'
+            case 'fire':
+                return 'bg-yellow-500'
+            case 'flying':
+                return 'bg-blue-200'
+            case 'water':
+                return 'bg-blue-400'
+            case 'psychic':
+                return 'bg-indigo-400'
+            case 'dragon':
+                return 'bg-indigo-600'
             default:
                 return 'bg-gray-200'
         }
