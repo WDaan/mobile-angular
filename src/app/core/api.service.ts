@@ -7,22 +7,28 @@ import { HttpClient } from '@angular/common/http'
 export class ApiService {
     readonly rootURL = 'https://pokeapi.co/api/v2/pokemon'
     readonly imageURL: string = 'https://pokeres.bastionbot.org/images/pokemon/'
-
+    readonly perPage = 9
 
     constructor(private http: HttpClient) { }
 
 
-    getPokemon(offset: number, limit: number) {
-        return this.http.get(`${this.rootURL}?offset=${offset}&limit=${limit}`)
+    getPage(page: number) {
+        const start = (page - 1) * this.perPage
+        return this.http.get(`${this.rootURL}?offset=${start}&limit=${this.perPage}`)
             .toPromise()
-            .then(response => JSON.parse(JSON.stringify(response)).results)
-            .then(items => items.map((item, idx) => {
-                const id: number = idx + offset + 1
+            .then((res: any) => {
+                const { count, results } = res
+                const formatted = results.map((item, idx) => {
+                    const id = item.url.match(/\/pokemon\/(\d+)\//)[1]
+                    return {
+                        name: item.name,
+                        url: `${this.imageURL}${id}.png`,
+                        id
+                    }
+                })
                 return {
-                    name: item.name,
-                    url: `${this.imageURL}${id}.png`,
-                    id
+                    count, results: formatted
                 }
-            }))
+            })
     }
 }
