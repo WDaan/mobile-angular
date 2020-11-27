@@ -27,4 +27,16 @@ export class DetailComponent implements OnInit {
         )
     }
 
+    getColor(type: string) {
+        switch (type) {
+            case 'green':
+                return 'bg-green-300'
+            case 'electric':
+                return 'bg-yellow-300'
+            case 'poison':
+                return 'bg-yellow-300'
+            default:
+                return 'bg-gray-200'
+        }
+    }
 }

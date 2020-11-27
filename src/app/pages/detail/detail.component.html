@@ -1,4 +1,4 @@
-<div class="mx-auto ma-5 flex justify-center">
+<div class="mx-auto ma-5 mt-5 flex justify-center">
     <div *ngIf="item" class='row-span-1 max-w-sm mt-0 relative rounded-lg overflow-hidden shadow-lg bg-white'>
         <img class='w-full' [src]="item.url" [alt]="item.name" />
         <div class='px-6 py-4'>
@@ -12,8 +12,8 @@
         </p>
         <div className='px-6 pt-4 pb-2'>
             <span *ngFor="let type of item.types"
-                class='inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'>
-                {{type}}
+                class='inline-block  bg-green-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'>
+                {{type.type.name}}
             </span>
         </div>
     </div>
