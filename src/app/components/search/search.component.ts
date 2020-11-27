@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
-import { ApiService } from 'src/app/core/api.service';
+import { Component, OnInit, Input } from '@angular/core'
+import { Router } from '@angular/router'
+import { ApiService } from 'src/app/core/api.service'
 
 @Component({
     selector: 'app-search',
@@ -8,7 +8,7 @@ import { ApiService } from 'src/app/core/api.service';
     styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-    @Input() value: string;
+    @Input() value: string
 
     constructor(private apiService: ApiService, private router: Router) { }
 

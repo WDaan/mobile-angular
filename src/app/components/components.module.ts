@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms'
 import { NgxPaginationModule } from 'ngx-pagination'
 
 import { ListComponent } from './list/list.component'
-import { SpinnerComponent } from './spinner/spinner.component';
+import { SpinnerComponent } from './spinner/spinner.component'
 import { SearchComponent } from './search/search.component'
 
 

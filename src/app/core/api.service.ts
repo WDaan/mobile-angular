@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http'
 export class ApiService {
     readonly rootURL = 'https://pokeapi.co/api/v2/pokemon'
     readonly imageURL: string = 'https://pokeres.bastionbot.org/images/pokemon/'
-    readonly perPage = 9
+    private perPage = 9
 
     constructor(private http: HttpClient) { }
 
@@ -41,5 +41,9 @@ export class ApiService {
                     ...res, url: `${this.imageURL}${id}.png`
                 }
             })
+    }
+
+    getPerPage() {
+        return this.perPage
     }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { ApiService } from 'src/app/core/api.service'
+import { SettingService } from 'src/app/core/setting.service'
 
 @Component({
     selector: 'app-detail',
@@ -11,10 +12,15 @@ export class DetailComponent implements OnInit {
 
     id: string
     item: any
+    darkMode: boolean
 
-    constructor(private route: ActivatedRoute, private apiService: ApiService) { }
+    constructor(
+        private route: ActivatedRoute,
+        private apiService: ApiService,
+        private settingsService: SettingService) { }
 
     ngOnInit(): void {
+        this.darkMode = this.settingsService.getTheme()
         this.id = this.route.snapshot.paramMap.get('id')
         this.fetchDetail()
     }

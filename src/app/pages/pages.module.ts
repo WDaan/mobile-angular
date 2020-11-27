@@ -6,11 +6,12 @@ import { CoreModule } from '../core/core.module'
 import { NotFoundComponent } from './not-found/not-found.component'
 import { DetailComponent } from './detail/detail.component'
 import { ComponentsModule } from '../components/components.module'
+import { SettingsComponent } from './settings/settings.component'
 
 @NgModule({
     imports: [BrowserModule, CommonModule, CoreModule, ComponentsModule],
     providers: [],
-    declarations: [HomeComponent, NotFoundComponent, DetailComponent],
+    declarations: [HomeComponent, NotFoundComponent, DetailComponent, SettingsComponent],
     exports: [HomeComponent]
 })
 export class PagesModule { }

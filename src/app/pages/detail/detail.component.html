@@ -1,12 +1,13 @@
-<div class="mx-auto ma-5 mt-5 flex justify-center">
-    <div *ngIf="item" class='row-span-1 max-w-md mt-0 pa-3 px-6 relative rounded-lg overflow-hidden shadow-lg bg-white'>
+<div class="mx-auto mt-5 pb-10 flex justify-center">
+    <div *ngIf="item" [ngClass]="darkMode? 'dark':  ''"
+        class='row-span-1 max-w-md mt-0 pa-3 px-6 relative rounded-lg overflow-hidden shadow-lg bg-white'>
         <img class='w-full' [src]="item.url" [alt]="item.name" />
         <div class='px-6 py-4'>
             <div class='font-bold text-xl  text-center'>{{ item.name | titlecase }}</div>
         </div>
         <div class="overflow-hidden rounded border-gray-200">
             <table class="w-full bg-white text-left">
-                <tbody class="text-gray-700">
+                <tbody class="text-gray-700" [ngClass]="darkMode? 'darkTable':  ''">
                     <tr>
                         <th class="py-3 px-4">height</th>
                         <td class="py-3 px-4"> {{item.height}} </td>
