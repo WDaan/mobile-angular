@@ -1,5 +1,5 @@
 <div class="mx-auto mt-5 flex justify-center">
-    <div *ngIf="item" [ngClass]="darkMode? 'dark':  ''"
+    <div *ngIf="item; else spinner" [ngClass]="darkMode? 'dark':  ''"
         class='row-span-1 max-w-md mt-0 pa-3 px-6 relative rounded-lg overflow-hidden shadow-lg bg-white'>
         <img class='w-full' [src]="item.url" [alt]="item.name" />
         <div class='px-6 py-4'>
@@ -30,4 +30,9 @@
             </span>
         </div>
     </div>
+    <ng-template #spinner>
+        <div style="margin-top: 10em; margin-bottom: 15em">
+            <app-spinner></app-spinner>
+        </div>
+    </ng-template>
 </div>

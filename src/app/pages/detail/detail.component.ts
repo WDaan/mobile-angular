@@ -44,7 +44,7 @@ export class DetailComponent extends withDarkMode() implements OnInit {
             case 'poison':
                 return 'bg-purple-300'
             case 'fire':
-                return 'bg-yellow-500'
+                return 'bg-red-500'
             case 'flying':
                 return 'bg-blue-200'
             case 'water':
@@ -53,6 +53,12 @@ export class DetailComponent extends withDarkMode() implements OnInit {
                 return 'bg-indigo-400'
             case 'dragon':
                 return 'bg-indigo-600'
+            case 'fairy':
+                return 'bg-pink-300'
+            case 'ground':
+                return 'bg-yellow-700'
+            case 'ice':
+                return 'bg-blue-300'
             default:
                 return 'bg-gray-200'
         }
