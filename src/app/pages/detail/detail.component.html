@@ -1,38 +1,40 @@
-<div class="mx-auto mt-5 flex justify-center">
-    <div *ngIf="item; else spinner" [ngClass]="darkMode? 'dark':  ''"
-        class='row-span-1 max-w-md mt-0 pa-3 px-6 relative rounded-lg overflow-hidden shadow-lg bg-white'>
-        <img class='w-full' [src]="item.url" [alt]="item.name" />
-        <div class='px-6 py-4'>
-            <div class='font-bold text-xl  text-center'>{{ item.name | titlecase }}</div>
+<div class="">
+    <div class="mx-auto mt-5 flex justify-center">
+        <div *ngIf="item; else spinner" [ngClass]="darkMode? 'dark':  ''"
+            class='row-span-1 max-w-md mt-0 pa-3 px-6 relative rounded-lg overflow-hidden shadow-lg bg-white'>
+            <img class='w-full' [src]="item.url" [alt]="item.name" />
+            <div class='px-6 py-4'>
+                <div class='font-bold text-xl  text-center'>{{ item.name | titlecase }}</div>
+            </div>
+            <div class="overflow-hidden rounded border-gray-200">
+                <table class="w-full bg-white text-left">
+                    <tbody class="text-gray-700" [ngClass]="darkMode? 'darkTable':  ''">
+                        <tr>
+                            <th class="py-3 px-4">height</th>
+                            <td class="py-3 px-4"> {{item.height}} </td>
+                        </tr>
+                        <tr>
+                            <th class="py-3 px-4">weight</th>
+                            <td class="py-3 px-4"> {{item.weight}} </td>
+                        </tr>
+                        <tr *ngFor="let stat of item.stats">
+                            <th class="py-3 px-4">{{stat.stat.name}}</th>
+                            <td class="py-3 px-4"> {{stat.base_stat}} </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class='px-6 pt-4 pb-2'>
+                <span *ngFor="let type of item.types" [ngClass]="getColor(type.type.name)"
+                    class='inline-block rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'>
+                    {{type.type.name}}
+                </span>
+            </div>
         </div>
-        <div class="overflow-hidden rounded border-gray-200">
-            <table class="w-full bg-white text-left">
-                <tbody class="text-gray-700" [ngClass]="darkMode? 'darkTable':  ''">
-                    <tr>
-                        <th class="py-3 px-4">height</th>
-                        <td class="py-3 px-4"> {{item.height}} </td>
-                    </tr>
-                    <tr>
-                        <th class="py-3 px-4">weight</th>
-                        <td class="py-3 px-4"> {{item.weight}} </td>
-                    </tr>
-                    <tr *ngFor="let stat of item.stats">
-                        <th class="py-3 px-4">{{stat.stat.name}}</th>
-                        <td class="py-3 px-4"> {{stat.base_stat}} </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class='px-6 pt-4 pb-2'>
-            <span *ngFor="let type of item.types" [ngClass]="getColor(type.type.name)"
-                class='inline-block rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'>
-                {{type.type.name}}
-            </span>
-        </div>
+        <ng-template #spinner>
+            <div style="margin-top: 10em; margin-bottom: 15em">
+                <app-spinner></app-spinner>
+            </div>
+        </ng-template>
     </div>
-    <ng-template #spinner>
-        <div style="margin-top: 10em; margin-bottom: 15em">
-            <app-spinner></app-spinner>
-        </div>
-    </ng-template>
 </div>
