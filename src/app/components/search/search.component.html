@@ -1,6 +1,7 @@
 <div class="container mx-auto text-center my-4 w-3/">
     <div class="relative text-gray-600 focus-within:text-gray-400">
         <input [(ngModel)]="value" (keydown.enter)="search()" type="search"
+            [ngClass]="darkMode? 'dark':  ''"
             class="relative shadow rounded border-0 p-3 w-3/5" placeholder="Search by name...">
         <span style="right: 5em" class="absolute inset-y-0 flex items-center pl-2">
             <button (click)="search()" type="submit" class="p-1 focus:outline-none focus:shadow-outline">
