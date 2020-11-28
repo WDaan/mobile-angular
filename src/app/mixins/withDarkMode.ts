@@ -2,7 +2,7 @@ import { SettingService } from '../core/setting.service'
 
 type Constructor<T> = new (...args: any[]) => T
 
-export function withDarkMode<T extends Constructor<{}>>(Base: T = (class { } as any)) {
+export function withDarkMode<T extends Constructor<{}>>(Base: T = (class { } as any)): any {
     return class extends Base {
         darkMode: boolean
         constructor(...args: any[]) {

@@ -6,7 +6,7 @@ import { withDarkMode } from 'src/app/mixins/withDarkMode'
 @Component({
     selector: 'app-list',
     templateUrl: './list.component.html',
-    styleUrls: ['./list.component.scss']
+    styleUrls: ['./list.component.scss'],
 })
 export class ListComponent extends withDarkMode() implements OnInit {
     page = 1
@@ -26,7 +26,7 @@ export class ListComponent extends withDarkMode() implements OnInit {
         this.getPage(this.page)
     }
 
-    getPage(page: number) {
+    getPage(page: number): void {
         this.loading = true
         this.apiService.getPage(page).then(res => {
             this.data = res.results

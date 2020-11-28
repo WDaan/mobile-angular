@@ -16,7 +16,7 @@ export class ApiService {
         })
     }
 
-    getPage(page: number) {
+    getPage(page: number): Promise<any>  {
         const start = (page - 1) * this.pageSize
         return this.http.get(`${this.rootURL}?offset=${start}&limit=${this.pageSize}`)
             .toPromise()
@@ -36,8 +36,8 @@ export class ApiService {
             })
     }
 
-    getDetail(id: string) {
-        return this.http.get(`${this.rootURL}/${id}`)
+    getDetail(nameOrId: string): Promise<any> {
+        return this.http.get(`${this.rootURL}/${nameOrId}`)
             .toPromise()
             .then((res: any) => {
                 const id = res.species.url.match(/\/pokemon-species\/(\d+)\//)[1]

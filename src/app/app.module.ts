@@ -5,9 +5,9 @@ import { CommonModule } from '@angular/common'
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { PagesModule } from './pages/pages.module'
-import { CoreModule } from './core/core.module'
 import { ServiceWorkerModule } from '@angular/service-worker'
 import { environment } from '../environments/environment'
+import { CoreModule } from './core/core.module'
 
 @NgModule({
     declarations: [

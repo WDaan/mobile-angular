@@ -16,15 +16,13 @@ export class SettingsComponent extends withDarkMode() implements OnInit {
         })
     }
 
-    ngOnInit(): void {
-        console.log(this.pageSize)
-    }
+    ngOnInit(): void { }
 
-    toggleDarkMode() {
+    toggleDarkMode(): void {
         this.settingsService.toggleTheme()
     }
 
-    changePageSize(value: number) {
+    changePageSize(value: number): void {
         this.settingsService.setPageSize(value)
     }
 

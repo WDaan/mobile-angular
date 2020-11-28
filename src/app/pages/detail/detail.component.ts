@@ -26,14 +26,14 @@ export class DetailComponent extends withDarkMode() implements OnInit {
         this.fetchDetail()
     }
 
-    fetchDetail() {
+    fetchDetail(): void {
         this.apiService.getDetail(this.id).then(res => {
             this.item = res
         }
         )
     }
 
-    getColor(type: string) {
+    getColor(type: string): string {
         switch (type) {
             case 'grass':
                 return 'bg-green-300'

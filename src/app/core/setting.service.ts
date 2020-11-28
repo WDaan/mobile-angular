@@ -1,46 +1,46 @@
 import { Injectable } from '@angular/core'
-import { BehaviorSubject } from 'rxjs'
+import { BehaviorSubject, Observable } from 'rxjs'
 
 @Injectable({
     providedIn: 'root'
 })
 export class SettingService {
 
-    private _darkMode = new BehaviorSubject<boolean>(true)
-    private _pageSize = new BehaviorSubject<number>(9)
+    private darkMode = new BehaviorSubject<boolean>(true)
+    private pageSize = new BehaviorSubject<number>(9)
 
     constructor() {
         const settings = JSON.parse(localStorage.getItem('settings'))
         if (settings) {
-            this._darkMode.next(settings.darkMode)
-            this._pageSize.next(settings.pageSize || 9)
+            this.darkMode.next(settings.darkMode)
+            this.pageSize.next(settings.pageSize || 9)
         }
     }
 
-    getTheme() {
-        return this._darkMode.asObservable()
+    getTheme(): Observable<boolean> {
+        return this.darkMode.asObservable()
     }
 
-    toggleTheme() {
-        this._darkMode.next(!this._darkMode.getValue())
+    toggleTheme(): void {
+        this.darkMode.next(!this.darkMode.getValue())
         this.saveSettings()
     }
 
-    getPageSize() {
-        return this._pageSize.asObservable()
+    getPageSize(): Observable<number> {
+        return this.pageSize.asObservable()
     }
 
-    setPageSize(value: number) {
-        this._pageSize.next(value)
+    setPageSize(value: number): void {
+        this.pageSize.next(value)
         this.saveSettings()
     }
 
-    saveSettings() {
+    saveSettings(): void {
         localStorage.setItem('settings',
             JSON.stringify(
                 {
-                    darkMode: this._darkMode.getValue(),
-                    pageSize: this._pageSize.getValue()
+                    darkMode: this.darkMode.getValue(),
+                    pageSize: this.pageSize.getValue()
                 })
         )
     }
