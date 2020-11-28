@@ -13,12 +13,16 @@ export class DetailComponent extends withDarkMode() implements OnInit {
 
     id: string
     item: any
+    showStats: boolean
 
     constructor(
         private route: ActivatedRoute,
         private apiService: ApiService,
         private settingsService: SettingService) {
         super(settingsService)
+        this.settingsService.getShowStats().subscribe(newShowStats => {
+            this.showStats = newShowStats
+        })
     }
 
     ngOnInit(): void {

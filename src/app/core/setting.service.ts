@@ -8,12 +8,14 @@ export class SettingService {
 
     private darkMode = new BehaviorSubject<boolean>(true)
     private pageSize = new BehaviorSubject<number>(9)
+    private showStats = new BehaviorSubject<boolean>(true)
 
     constructor() {
         const settings = JSON.parse(localStorage.getItem('settings'))
         if (settings) {
             this.darkMode.next(settings.darkMode)
             this.pageSize.next(settings.pageSize || 9)
+            this.showStats.next(settings.showStats)
         }
     }
 
@@ -35,12 +37,22 @@ export class SettingService {
         this.saveSettings()
     }
 
+    getShowStats(): Observable<boolean> {
+        return this.showStats.asObservable()
+    }
+
+    toggleShowStats(): void {
+        this.showStats.next(!this.showStats.getValue())
+        this.saveSettings()
+    }
+
     saveSettings(): void {
         localStorage.setItem('settings',
             JSON.stringify(
                 {
                     darkMode: this.darkMode.getValue(),
-                    pageSize: this.pageSize.getValue()
+                    pageSize: this.pageSize.getValue(),
+                    showStats: this.showStats.getValue()
                 })
         )
     }

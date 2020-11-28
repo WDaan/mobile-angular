@@ -17,10 +17,12 @@
                             <th class="py-3 px-4">weight</th>
                             <td class="py-3 px-4"> {{item.weight}} </td>
                         </tr>
-                        <tr *ngFor="let stat of item.stats">
-                            <th class="py-3 px-4">{{stat.stat.name}}</th>
-                            <td class="py-3 px-4"> {{stat.base_stat}} </td>
-                        </tr>
+                        <ng-container *ngIf="showStats">
+                            <tr *ngFor="let stat of item.stats">
+                                <th class="py-3 px-4">{{stat.stat.name}}</th>
+                                <td class="py-3 px-4"> {{stat.base_stat}} </td>
+                            </tr>
+                        </ng-container>
                     </tbody>
                 </table>
             </div>
