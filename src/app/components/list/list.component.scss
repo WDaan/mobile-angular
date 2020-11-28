@@ -5,3 +5,7 @@
 .darkPaginate {
     background-color: #E5E7EB;
 }
+
+.dark, ::ng-deep .ngx-pagination li a {
+    color: white !important;
+}
