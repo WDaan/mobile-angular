@@ -10,14 +10,16 @@ import { withDarkMode } from 'src/app/mixins/withDarkMode'
 })
 export class ListComponent extends withDarkMode() implements OnInit {
     page = 1
-    perPage: number
+    pageSize: number
     total: number
     data = []
     loading = true
 
     constructor(private apiService: ApiService, private settingsService: SettingService) {
         super(settingsService)
-        this.perPage = this.apiService.getPerPage()
+        this.settingsService.getPageSize().subscribe(newPageSize => {
+            this.pageSize = newPageSize
+        })
     }
 
     ngOnInit(): void {

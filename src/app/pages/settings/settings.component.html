@@ -1,24 +1,41 @@
-<div class="container mx-auto mt-8">
-    <table class="mx-auto bg-white text-left w-3/5">
-        <tbody class="text-gray-700" [ngClass]="darkMode? 'darkTable':  ''">
-            <tr>
-                <th class="py-3 px-4">Darkmode</th>
-                <td class="py-3 px-4">
-                    <!-- Toggle Button -->
-                    <label for="toogleA" class="flex items-center cursor-pointer">
-                        <!-- toggle -->
-                        <div class="relative">
-                            <!-- input -->
-                            <input id="toogleA" type="checkbox" class="hidden" [checked]="darkMode" (click)="toggleDarkMode()" />
-                            <!-- line -->
-                            <div class="toggle__line w-10 h-4 bg-gray-400 rounded-full shadow-inner"></div>
-                            <!-- dot -->
-                            <div class="toggle__dot absolute w-6 h-6 bg-white rounded-full shadow inset-y-0 left-0">
+<div [ngClass]="darkMode? 'dark':  ''" class="container mx-auto mt-8">
+    <div class="shadow overflow-hidden mx-auto w-3/5 rounded border-gray-200">
+        <table class="rounded bg-white text-left w-full ">
+            <tbody class="text-gray-700" [ngClass]="darkMode? 'darkTable':  ''">
+                <tr>
+                    <th class="w-3/4 py-3 px-4">Darkmode</th>
+                    <td class="w-1/4">
+                        <!-- Toggle Button -->
+                        <label for="toogleA" class="flex items-center cursor-pointer">
+                            <!-- toggle -->
+                            <div class="relative">
+                                <!-- input -->
+                                <input id="toogleA" type="checkbox" class="hidden" [checked]="darkMode"
+                                    (click)="toggleDarkMode()" />
+                                <!-- line -->
+                                <div class="toggle__line w-10 h-4 bg-gray-400 rounded-full shadow-inner"></div>
+                                <!-- dot -->
+                                <div class="toggle__dot absolute w-6 h-6 bg-white rounded-full shadow inset-y-0 left-0">
+                                </div>
                             </div>
-                        </div>
-                    </label>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="w-3/4 py-3 px-4">Pagesize</th>
+                    <td class="w-1/4">
+                        <select style="width: 5em; padding: 0.3em;"
+                            class="form-select bg-gray-200 rounded mt-1 block w-full"
+                            [value]="pageSize" (change)="changePageSize($event.target.value)">
+                            <option>6</option>
+                            <option>9</option>
+                            <option>12</option>
+                            <option>24</option>
+                            <option>36</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

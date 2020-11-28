@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
+import { SettingService } from './setting.service'
 
 @Injectable({
     providedIn: 'root'
@@ -7,14 +8,17 @@ import { HttpClient } from '@angular/common/http'
 export class ApiService {
     readonly rootURL = 'https://pokeapi.co/api/v2/pokemon'
     readonly imageURL: string = 'https://pokeres.bastionbot.org/images/pokemon/'
-    private perPage = 9
+    private pageSize: number
 
-    constructor(private http: HttpClient) { }
-
+    constructor(private http: HttpClient, private settingsService: SettingService) {
+        this.settingsService.getPageSize().subscribe(newPageSize => {
+            this.pageSize = newPageSize
+        })
+    }
 
     getPage(page: number) {
-        const start = (page - 1) * this.perPage
-        return this.http.get(`${this.rootURL}?offset=${start}&limit=${this.perPage}`)
+        const start = (page - 1) * this.pageSize
+        return this.http.get(`${this.rootURL}?offset=${start}&limit=${this.pageSize}`)
             .toPromise()
             .then((res: any) => {
                 const { count, results } = res
@@ -41,9 +45,5 @@ export class ApiService {
                     ...res, url: `${this.imageURL}${id}.png`
                 }
             })
-    }
-
-    getPerPage() {
-        return this.perPage
     }
 }
