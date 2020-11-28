@@ -2,10 +2,6 @@
     background-color: #4B5563;
 }
 
-.darkPaginate {
-    background-color: #E5E7EB;
-}
-
-.dark, ::ng-deep .ngx-pagination li a {
+.darkPaginate ::ng-deep .ngx-pagination li a {
     color: white !important;
 }

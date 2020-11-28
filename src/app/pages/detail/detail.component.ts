@@ -2,25 +2,26 @@ import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { ApiService } from 'src/app/core/api.service'
 import { SettingService } from 'src/app/core/setting.service'
+import { withDarkMode } from 'src/app/mixins/withDarkMode'
 
 @Component({
     selector: 'app-detail',
     templateUrl: './detail.component.html',
     styleUrls: ['./detail.component.scss']
 })
-export class DetailComponent implements OnInit {
+export class DetailComponent extends withDarkMode() implements OnInit {
 
     id: string
     item: any
-    darkMode: boolean
 
     constructor(
         private route: ActivatedRoute,
         private apiService: ApiService,
-        private settingsService: SettingService) { }
+        private settingsService: SettingService) {
+        super(settingsService)
+    }
 
     ngOnInit(): void {
-        this.darkMode = this.settingsService.getTheme()
         this.id = this.route.snapshot.paramMap.get('id')
         this.fetchDetail()
     }

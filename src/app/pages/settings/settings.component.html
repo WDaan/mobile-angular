@@ -1,9 +1,23 @@
 <div class="container mx-auto mt-8">
-    <table class="w-full bg-white text-left">
-        <tbody class="text-gray-700" [ngClass]="true? 'darkTable':  ''">
+    <table class="mx-auto bg-white text-left w-3/5">
+        <tbody class="text-gray-700" [ngClass]="darkMode? 'darkTable':  ''">
             <tr>
                 <th class="py-3 px-4">Darkmode</th>
-                <td class="py-3 px-4">yes </td>
+                <td class="py-3 px-4">
+                    <!-- Toggle Button -->
+                    <label for="toogleA" class="flex items-center cursor-pointer">
+                        <!-- toggle -->
+                        <div class="relative">
+                            <!-- input -->
+                            <input id="toogleA" type="checkbox" class="hidden" [checked]="darkMode" (click)="toggleDarkMode()" />
+                            <!-- line -->
+                            <div class="toggle__line w-10 h-4 bg-gray-400 rounded-full shadow-inner"></div>
+                            <!-- dot -->
+                            <div class="toggle__dot absolute w-6 h-6 bg-white rounded-full shadow inset-y-0 left-0">
+                            </div>
+                        </div>
+                    </label>
+                </td>
             </tr>
         </tbody>
     </table>

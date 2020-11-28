@@ -6,3 +6,14 @@
     background-color: #4B5563;
     color: white !important;
 }
+
+.toggle__dot {
+    top: -.25rem;
+    left: -.25rem;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  input:checked ~ .toggle__dot {
+    transform: translateX(100%);
+    background-color: #48bb78;
+  }
