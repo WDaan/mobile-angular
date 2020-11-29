@@ -1,6 +1,6 @@
-<div class="mt-5 pb-10 mx-4 flex justify-center">
-    <div *ngIf="item; else spinner" [ngClass]="darkMode? 'dark':  ''"
-        class='grid lg:grid-cols-2 max-w-md lg:max-w-4xl mt-0 pa-3 px-6 rounded-lg overflow-hidden shadow-lg bg-white'>
+<div [ngClass]="darkMode? 'dark':  ''" class="mt-5 pb-10 flex mb-10 bg-gray-200 justify-center">
+    <div *ngIf="item; else spinner" 
+        class='card grid lg:grid-cols-2 mx-6 max-w-md lg:max-w-4xl mt-0 pa-3 px-6 rounded-lg overflow-hidden shadow-lg bg-white'>
         <div>
             <img class='w-full lg:mr-20' [src]="item.url" [alt]="item.name" />
         </div>
