@@ -7,7 +7,6 @@ import { SettingsComponent } from './pages/settings/settings.component'
 
 import { PagesModule } from './pages/pages.module'
 
-
 const routes: Routes = [
     { path: 'detail/:id', component: DetailComponent },
     { path: 'settings', component: SettingsComponent },

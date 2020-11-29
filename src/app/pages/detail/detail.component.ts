@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { ActivatedRoute, ParamMap } from '@angular/router'
+import { ActivatedRoute, ParamMap, Router } from '@angular/router'
 import { ApiService } from 'src/app/core/api.service'
 import { SettingService } from 'src/app/core/setting.service'
 import { withDarkMode } from 'src/app/mixins/withDarkMode'
@@ -18,7 +18,8 @@ export class DetailComponent extends withDarkMode() implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private apiService: ApiService,
-        private settingsService: SettingService) {
+        private settingsService: SettingService,
+        private router: Router) {
         super(settingsService)
         this.settingsService.getShowStats().subscribe(newShowStats => {
             this.showStats = newShowStats
@@ -36,10 +37,9 @@ export class DetailComponent extends withDarkMode() implements OnInit {
     }
 
     fetchDetail(): void {
-        this.apiService.getDetail(this.id).then(res => {
-            this.item = res
-        }
-        )
+        this.apiService.getDetail(this.id)
+            .then(res => this.item = res)
+            .catch(() => this.router.navigate(['notFound']))
     }
 
     getColor(type: string): string {

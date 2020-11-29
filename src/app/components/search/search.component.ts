@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core'
 import { Router } from '@angular/router'
-import { ApiService } from 'src/app/core/api.service'
 import { SettingService } from 'src/app/core/setting.service'
 import { withDarkMode } from 'src/app/mixins/withDarkMode'
 
@@ -13,7 +12,6 @@ export class SearchComponent extends withDarkMode() implements OnInit {
     @Input() value: string
 
     constructor(
-        private apiService: ApiService,
         private router: Router,
         private settingService: SettingService) {
         super(settingService)
@@ -24,8 +22,6 @@ export class SearchComponent extends withDarkMode() implements OnInit {
 
     search(): void {
         if (!this.value) return
-        this.apiService.getDetail(this.value.toLowerCase())
-            .then(res => this.router.navigate(['/detail', this.value.toLowerCase()]))
-            .catch(() => this.router.navigate(['notFound']))
+        this.router.navigate(['/detail', this.value.toLowerCase()])
     }
 }
