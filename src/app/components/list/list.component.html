@@ -1,10 +1,10 @@
-<div [ngClass]="darkMode? 'dark':  ''">
+<div class="bg-gray-200" [ngClass]="darkMode? 'dark':  ''">
     <div class="container mx-auto ma-8">
         <div *ngIf="data && data.length &&!loading; else spinner"
             class="container  grid grid-cols-1 md:grid-cols-3 gap-4 cursor-pointer">
             <div [ngClass]="darkMode? 'darkCard':  ''" [routerLink]="['/detail', item.id]" *ngFor="let item of data |
         paginate: { id: 'server', itemsPerPage: pageSize, currentPage: page, totalItems: total }"
-                class='row-span-1 max-w-sm mt-0 mx-auto relative rounded-lg overflow-hidden shadow-lg bg-white'>
+                class='max-w-sm mt-0 mx-auto relative rounded-lg overflow-hidden shadow-lg bg-white'>
                 <img class='w-full' [src]="item.url" [alt]="item.name" />
                 <div class='px-6 py-4'>
                     <div class='font-bold text-xl  text-center'>{{ item.name | titlecase }}</div>

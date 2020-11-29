@@ -1,10 +1,12 @@
-<div class="">
-    <div class="mx-auto mt-5 flex justify-center">
-        <div *ngIf="item; else spinner" [ngClass]="darkMode? 'dark':  ''"
-            class='row-span-1 max-w-md mt-0 pa-3 px-6 relative rounded-lg overflow-hidden shadow-lg bg-white'>
-            <img class='w-full' [src]="item.url" [alt]="item.name" />
+<div class="mt-5 pb-10 mx-4 flex justify-center">
+    <div *ngIf="item; else spinner" [ngClass]="darkMode? 'dark':  ''"
+        class='grid lg:grid-cols-2 max-w-md lg:max-w-4xl mt-0 pa-3 px-6 rounded-lg overflow-hidden shadow-lg bg-white'>
+        <div>
+            <img class='w-full lg:mr-20' [src]="item.url" [alt]="item.name" />
+        </div>
+        <div class="">
             <div class='px-6 py-4'>
-                <div class='font-bold text-xl  text-center'>{{ item.name | titlecase }}</div>
+                <div class='font-bold text-xl text-center'>{{ item.name | titlecase }}</div>
             </div>
             <div class="overflow-hidden rounded border-gray-200">
                 <table class="w-full bg-white text-left">
@@ -33,10 +35,10 @@
                 </span>
             </div>
         </div>
-        <ng-template #spinner>
-            <div style="margin-top: 10em; margin-bottom: 15em">
-                <app-spinner></app-spinner>
-            </div>
-        </ng-template>
     </div>
+    <ng-template #spinner>
+        <div style="margin-top: 10em; margin-bottom: 15em">
+            <app-spinner></app-spinner>
+        </div>
+    </ng-template>
 </div>
