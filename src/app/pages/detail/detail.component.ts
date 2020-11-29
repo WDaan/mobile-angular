@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute, ParamMap } from '@angular/router'
 import { ApiService } from 'src/app/core/api.service'
 import { SettingService } from 'src/app/core/setting.service'
 import { withDarkMode } from 'src/app/mixins/withDarkMode'
@@ -26,8 +26,13 @@ export class DetailComponent extends withDarkMode() implements OnInit {
     }
 
     ngOnInit(): void {
-        this.id = this.route.snapshot.paramMap.get('id')
-        this.fetchDetail()
+        this.route.paramMap.subscribe(
+            (params: ParamMap) => {
+                this.id = params.get('id')
+                this.fetchDetail()
+            }
+        )
+
     }
 
     fetchDetail(): void {

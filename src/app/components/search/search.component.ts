@@ -23,6 +23,7 @@ export class SearchComponent extends withDarkMode() implements OnInit {
     }
 
     search(): void {
+        if (!this.value) return
         this.apiService.getDetail(this.value)
             .then(res => this.router.navigate(['/detail', this.value]))
             .catch(() => this.router.navigate(['notFound']))
