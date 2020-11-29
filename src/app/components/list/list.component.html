@@ -17,7 +17,7 @@
             </div>
         </ng-template>
     </div>
-    <div [ngClass]="darkMode? 'darkPaginate':  ''" class="container py-6 text-center mx-auto">
+    <div [ngClass]="darkMode? 'darkPaginate':  ''" class="container py-10 mb-10 text-center mx-auto">
         <pagination-controls (pageChange)="getPage($event)" id="server">
         </pagination-controls>
     </div>
