@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { BehaviorSubject, Observable } from 'rxjs'
-
+import IndexedDb from './indexdb'
 @Injectable({
     providedIn: 'root'
 })
@@ -10,8 +10,16 @@ export class SettingService {
     private pageSize = new BehaviorSubject<number>(9)
     private showStats = new BehaviorSubject<boolean>(true)
 
+    private db: IndexedDb;
+
     constructor() {
-        const settings = JSON.parse(localStorage.getItem('settings'))
+        this.setup()
+    }
+
+    async setup() {
+        this.db = new IndexedDb('poke');
+        await this.db.createObjectStore(['settings']);
+        const settings = await this.db.getValue('settings', 1);
         if (settings) {
             this.darkMode.next(settings.darkMode)
             this.pageSize.next(settings.pageSize || 9)
@@ -46,14 +54,15 @@ export class SettingService {
         this.saveSettings()
     }
 
-    saveSettings(): void {
-        localStorage.setItem('settings',
-            JSON.stringify(
+    async saveSettings(): Promise<any> {
+        await this.db
+            .putValue('settings',
                 {
+                    id: 1,
                     darkMode: this.darkMode.getValue(),
                     pageSize: this.pageSize.getValue(),
                     showStats: this.showStats.getValue()
-                })
-        )
+                }
+            )
     }
 }

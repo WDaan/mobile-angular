@@ -16,7 +16,7 @@ export class ApiService {
         })
     }
 
-    getPage(page: number): Promise<any>  {
+    getPage(page: number): Promise<any> {
         const start = (page - 1) * this.pageSize
         return this.http.get(`${this.rootURL}?offset=${start}&limit=${this.pageSize}`)
             .toPromise()
